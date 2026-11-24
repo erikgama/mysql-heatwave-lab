@@ -1,0 +1,31 @@
+GUIA DA CAMPANHA BANCÁRIA PARA DEMONSTRAÇÃO DE BUSCA SEMÂNTICA
+
+Origem e finalidade
+Este guia descreve, em português, o conjunto público de dados de marketing bancário da UCI usado no laboratório MySQL HeatWave. As campanhas de uma instituição bancária portuguesa utilizaram ligações telefônicas para oferecer depósitos a prazo. Em alguns casos, o mesmo cliente recebeu mais de um contato. O objetivo de classificação é prever se o cliente aderiu ao depósito a prazo. Fonte: https://archive.ics.uci.edu/dataset/222/bank+marketing. Este guia foi preparado a partir da descrição oficial do conjunto e de contagens verificadas no arquivo bank.csv do workshop.
+
+Arquivos e tamanho do conjunto
+O arquivo completo bank-full.csv contém 45.211 registros. O arquivo bank.csv é uma amostra de 4.521 registros selecionada do conjunto completo. Cada registro de bank.csv tem 17 campos: 16 variáveis de entrada e a variável de resultado y. A amostra menor facilita demonstrações e testes de algoritmos que exigem mais processamento.
+
+Resultado da campanha
+O campo y informa se o cliente contratou o depósito a prazo. No arquivo original, o valor literal yes indica adesão e o valor literal no indica ausência de adesão. Na amostra bank.csv usada no workshop, 521 registros têm y igual a yes e 4.000 registros têm y igual a no. A taxa observada de adesão é aproximadamente 11,5%. Esse número descreve a amostra; não deve ser apresentado como taxa de todas as campanhas do banco.
+
+Dados cadastrais do cliente
+O campo age informa a idade. O campo job descreve a ocupação. O campo marital informa a situação conjugal; no dicionário de origem, a categoria divorced abrange pessoas divorciadas ou viúvas. O campo education informa a escolaridade. Os nomes dos campos e os códigos das categorias são mantidos como no CSV original para permitir a comparação direta com consultas SQL.
+
+Situação financeira do cliente
+O campo default indica se o cliente tem crédito em inadimplência. O campo balance contém o saldo médio anual em euros. O campo housing informa se existe financiamento imobiliário. O campo loan informa se existe empréstimo pessoal. Esses campos são variáveis de entrada; nenhum deles, isoladamente, determina o resultado y.
+
+Último contato na campanha atual
+O campo contact identifica o meio de comunicação do último contato, como telefone fixo ou celular. O campo day informa o dia do mês do último contato. O campo month informa o mês do último contato. O campo duration mede, em segundos, a duração do último contato. A duração só é conhecida após o contato; portanto, uma previsão feita antes da ligação não deve depender desse campo.
+
+Frequência de contatos
+O campo campaign conta os contatos realizados com o cliente durante a campanha atual e inclui o último contato. O campo previous conta os contatos feitos antes da campanha atual. Os dois campos tratam de períodos diferentes e não devem ser confundidos.
+
+Histórico de campanha anterior
+O campo pdays informa quantos dias se passaram desde o último contato de uma campanha anterior. O valor -1 significa que o cliente não havia sido contatado anteriormente. Na amostra bank.csv, 3.705 registros têm pdays igual a -1. O campo poutcome registra o resultado da campanha de marketing anterior. O código unknown é uma categoria explícita do CSV; não equivale automaticamente a um valor SQL NULL.
+
+Leitura de valores ausentes
+A descrição oficial do conjunto informa que não há valores de atributo ausentes. Alguns campos categóricos, porém, podem trazer o código literal unknown. Ao analisar os dados, é importante distinguir esse código textual de um campo nulo no banco de dados.
+
+Perguntas que o guia permite responder
+O guia permite identificar o significado de y, comparar o tamanho de bank.csv com bank-full.csv, explicar a diferença entre campaign e previous, interpretar pdays igual a -1, localizar o significado de duration e conferir a quantidade observada de adesões na amostra. As respostas numéricas se referem ao arquivo bank.csv usado neste laboratório.

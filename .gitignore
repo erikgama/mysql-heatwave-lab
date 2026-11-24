@@ -1,0 +1,10 @@
+.DS_Store
+~$*.docx
+*.log
+*.tmp
+.env
+.env.*
+.oci/
+*.key
+*.pem
+__pycache__/
