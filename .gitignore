@@ -8,3 +8,4 @@
 *.key
 *.pem
 __pycache__/
+sql/laboratorio_tenancy.sql
